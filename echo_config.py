@@ -336,7 +336,7 @@ def gen_multijvm_cfg():
 #
 jbb2015.test.specLicense=LIC-XXXX-XXXX-XXX
 jbb2015.test.date="""+jbb_conf["date"]+"""
-jbb2015.test.internalReference=www.flipkart.com
+jbb2015.test.internalReference=www.myreference.com
 jbb2015.test.location=Bengaluru
 jbb2015.test.testSponsor="""+jbb_conf["testSponsor"]+"""
 jbb2015.test.testedBy="""+jbb_conf["testSponsor"]+"""
