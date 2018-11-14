@@ -68,7 +68,7 @@ osv=`uname -v`
 osr=`uname -r`
 osa=`uname -m`
 
-tester=Flipkart
+tester=TESTER
 
 
 if [ $# -eq 0 ];then
@@ -98,7 +98,7 @@ elif [ "$1" = "jbb" ]; then
 	echo "jbb2015.test.specLicense=LIC-XXXX-XXXX-XXXX"
 	echo "jbb2015.test.date=`date`"
 	echo "jbb2015.test.internalReference=http://$vendor/"
-	echo "jbb2015.test.location=Bengaluru"
+	echo "jbb2015.test.location=BENGALURU"
 	echo "jbb2015.test.testSponsor=$vendor"
 	echo "jbb2015.test.testedBy=$tester"
 	echo "jbb2015.test.testedByName=$tester"
@@ -164,9 +164,9 @@ elif [ "$1" = "jbb" ]; then
 
 	echo 	"jbb2015.product.SUT.hw.system.hw_1.name=$vendor"
 	echo 	"jbb2015.product.SUT.hw.system.hw_1.model=$model"
-	echo 	"jbb2015.product.SUT.hw.system.hw_1.formFactor=Tower etc."
+	echo 	"jbb2015.product.SUT.hw.system.hw_1.formFactor=HW_FORM_FACTOR"
 	echo 	"jbb2015.product.SUT.hw.system.hw_1.cpuName=$cpuname"
-	echo 	"jbb2015.product.SUT.hw.system.hw_1.cpuCharacteristics= "
+	echo 	"jbb2015.product.SUT.hw.system.hw_1.cpuCharacteristics=CPU_CHARACTERISTICS "
 	echo 	"jbb2015.product.SUT.hw.system.hw_1.nSystems=1 "
 	echo 	"# all details below are per system basis "
 	echo 	"jbb2015.product.SUT.hw.system.hw_1.nodesPerSystem=$nodes"
@@ -183,13 +183,13 @@ elif [ "$1" = "jbb" ]; then
 	echo 	"jbb2015.product.SUT.hw.system.hw_1.tertiaryCache=$l3cache "
 	echo 	"jbb2015.product.SUT.hw.system.hw_1.otherCache=None "
 	echo 	"jbb2015.product.SUT.hw.system.hw_1.disk=$disk "
-	echo 	"jbb2015.product.SUT.hw.system.hw_1.file_system=UFS "
+	echo 	"jbb2015.product.SUT.hw.system.hw_1.file_system=HW_FILE_SYSTEM "
 	echo 	"jbb2015.product.SUT.hw.system.hw_1.memoryInGB=$mem_in_GB "
 	echo 	"jbb2015.product.SUT.hw.system.hw_1.memoryDIMMS=$(if [ "$mem_dimms" != "0" ];then echo $mem_dimms;else echo "";fi) "
-	echo 	"jbb2015.product.SUT.hw.system.hw_1.memoryDetails=  "
+	echo 	"jbb2015.product.SUT.hw.system.hw_1.memoryDetails=HW_MEM_DETAILS  "
 	echo 	"jbb2015.product.SUT.hw.system.hw_1.networkInterface=$network "
-	echo 	"jbb2015.product.SUT.hw.system.hw_1.psuInstalled= "
-	echo 	"jbb2015.product.SUT.hw.system.hw_1.other= "
+	echo 	"jbb2015.product.SUT.hw.system.hw_1.psuInstalled=HW_PSU_DETAILS "
+	echo 	"jbb2015.product.SUT.hw.system.hw_1.other=HW_OTHER_DETAILS "
 	echo 	"jbb2015.product.SUT.hw.system.hw_1.sharedEnclosure=None "
 	echo 	"jbb2015.product.SUT.hw.system.hw_1.sharedDescription=None "
 	echo 	"jbb2015.product.SUT.hw.system.hw_1.sharedComment=None "
@@ -198,10 +198,10 @@ elif [ "$1" = "jbb" ]; then
 	echo 	"jbb2015.product.SUT.hw.system.hw_1.notes=None"
 	echo 	"#jbb2015.product.SUT.hw.other.<OTHER label>.<param> = <value> "
 	echo 	"# Sample configuration for \"network_1\" other "
-	echo 	"jbb2015.product.SUT.hw.other.network_1.name=Flipkart "
-	echo 	"jbb2015.product.SUT.hw.other.network_1.vendor=Flipkart "
-	echo 	"jbb2015.product.SUT.hw.other.network_1.vendor.url=http://flipkart.com/ "
-	echo 	"jbb2015.product.SUT.hw.other.network_1.version=V1 "
+	echo 	"jbb2015.product.SUT.hw.other.network_1.name=NW_DETAILS "
+	echo 	"jbb2015.product.SUT.hw.other.network_1.vendor=NW_DETAILS"
+	echo 	"jbb2015.product.SUT.hw.other.network_1.vendor.url=http://NW_DETAILS.com/ "
+	echo 	"jbb2015.product.SUT.hw.other.network_1.version=NW_VERSION "
 	echo 	"jbb2015.product.SUT.hw.other.network_1.available=$avail "
 	echo 	"jbb2015.product.SUT.hw.other.network_1.bitness=n/a "
 	echo 	"jbb2015.product.SUT.hw.other.network_1.notes=None"
