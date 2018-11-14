@@ -1,0 +1,2 @@
+# createconfig
+Creating spec config
