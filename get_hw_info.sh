@@ -37,7 +37,7 @@ l2cache=$(echo `lscpu | egrep "L2" | cut -f2 -d ':'`)
 l3cache=$(echo `lscpu | egrep "L3" | cut -f2 -d ':'`)
 # echo $l3cache
 
-order=$((ncpus - 1))
+order=$(echo `lscpu | egrep "On-line" | cut -f2 -d ':'`)	#$((ncpus - 1))
 # echo ORDER: $order
 
 nominal=$(echo `sudo dmidecode -t processor | egrep "Max Speed:|Current Speed:" | sort |uniq |head -n1 |cut -f2 -d':'`)
@@ -79,7 +79,7 @@ if [ $# -eq 0 ];then
 	echo hw_tcache=$l3cache #set_hw
 	echo hw_cpu_nominal_mhz=$nominal
 	echo hw_vendor=$vendor #set_hw
-	echo hw_ncpuorder=`echo 0 - $order`
+	echo hw_ncpuorder=$order	#`echo 0 - $order`
 	echo hw_avail=`date +%b-%Y` #set_availability
 	echo sw_avail=`date +%b-%Y` #set_availability
 	echo hw_ncores=$((sockets * corespersock)) #set_hw
