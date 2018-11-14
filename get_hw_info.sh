@@ -61,6 +61,9 @@ avail=`date +%b-%Y`
 
 cpuname=$(echo `lscpu | sed -n '13p'| cut -f2 -d ':'`)
 
+# PSU RELATED INFO
+# sudo lshw -c power
+
 
 osn=`uname -o`
 osnv=`uname -n`
