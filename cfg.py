@@ -2,16 +2,16 @@ import os
 import datetime as dt
 
 configuration = {
-"label" : "Flipkart_",
+"label" : "MY_LABEL",
 "reportable" : "1",
-"tune" : "all",
+"tune" : "base",
 "size" : "ref",
 "iterations": "3",
 "copies" : "1",
 "threads" : "1",
 "hw_vendor" : "HW_VENDOR",
-"tester" : "Flipkart",
-"test_sponsor" : "Flipkart",
+"tester" : "TESTER",
+"test_sponsor" : "TEST SPONSOR",
 "license_num" : "LIC-xxxx-xxxx-xxxx-xxxx",
 "hw_avail" : "SEPT-2018",
 "sw_avail" : "SEPT-2018",
