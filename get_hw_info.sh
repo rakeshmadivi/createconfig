@@ -80,6 +80,9 @@ osv=`uname -v`
 osr=`uname -r`
 osa=`uname -m`
 
+# JVM DETAILS
+jvm_details=$(echo `java -version 2>&1`)
+
 tester=TESTER
 
 
@@ -143,12 +146,12 @@ elif [ "$1" = "jbb" ]; then
 	# Describe each JVM product using following format:
 	#jbb2015.product.SUT.sw.jvm.<JVM label>.<param> = <value>
 	# Sample configuration for "jvm_1" JVM
-	echo 	"jbb2015.product.SUT.sw.jvm.jvm_1.name=$(echo `java -version`)"
-	echo 	"jbb2015.product.SUT.sw.jvm.jvm_1.version=$(echo `java -version`)"
-	echo 	"jbb2015.product.SUT.sw.jvm.jvm_1.vendor=$(echo `java -version`)"
+	echo 	"jbb2015.product.SUT.sw.jvm.jvm_1.name=$jvm_details"
+	echo 	"jbb2015.product.SUT.sw.jvm.jvm_1.version=$jvm_details"
+	echo 	"jbb2015.product.SUT.sw.jvm.jvm_1.vendor=$jvm_details"
 	echo 	"jbb2015.product.SUT.sw.jvm.jvm_1.vendor.url=http://www.java.com"
-	echo 	"jbb2015.product.SUT.sw.jvm.jvm_1.available=$(echo `java -version`)"
-	echo 	"jbb2015.product.SUT.sw.jvm.jvm_1.bitness=$(echo `java -version`)"
+	echo 	"jbb2015.product.SUT.sw.jvm.jvm_1.available=$jvm_details"
+	echo 	"jbb2015.product.SUT.sw.jvm.jvm_1.bitness=$jvm_details"
 	echo 	"jbb2015.product.SUT.sw.jvm.jvm_1.notes=note"
 	# Describe each OS product using following format:
 	#jbb2015.product.SUT.sw.os.<OS label>.<param> = <value>
@@ -157,7 +160,7 @@ elif [ "$1" = "jbb" ]; then
 	echo 	"jbb2015.product.SUT.sw.os.os_1.version=$osv"
 	echo 	"jbb2015.product.SUT.sw.os.os_1.bitness=$osa"
 	echo 	"jbb2015.product.SUT.sw.os.os_1.available=$avail"
-	echo 	"jbb2015.product.SUT.sw.os.os_1.vendor=$osvn"
+	echo 	"jbb2015.product.SUT.sw.os.os_1.vendor=$osnv"
 	echo 	"jbb2015.product.SUT.sw.os.os_1.vendor.url=http://${osnv}.com/"
 	echo 	"jbb2015.product.SUT.sw.os.os_1.notes=None"
 	#jbb2015.product.SUT.sw.other.<OTHER label>.<param> = <value>
@@ -178,7 +181,7 @@ elif [ "$1" = "jbb" ]; then
 	echo 	"jbb2015.product.SUT.hw.system.hw_1.model=$model"
 	echo 	"jbb2015.product.SUT.hw.system.hw_1.formFactor=$form_factor"
 	echo 	"jbb2015.product.SUT.hw.system.hw_1.cpuName=$cpuname"
-	echo 	"jbb2015.product.SUT.hw.system.hw_1.cpuCharacteristics=CPU_CHARACTERISTICS "
+	echo 	"jbb2015.product.SUT.hw.system.hw_1.cpuCharacteristics=$cpuname, $mem_in_GB, $l1cache, $l2cache, $l3cache "
 	echo 	"jbb2015.product.SUT.hw.system.hw_1.nSystems=1 "
 	echo 	"# all details below are per system basis "
 	echo 	"jbb2015.product.SUT.hw.system.hw_1.nodesPerSystem=$nodes"
