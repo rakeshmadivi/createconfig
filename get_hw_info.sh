@@ -176,7 +176,7 @@ elif [ "$1" = "jbb" ]; then
 
 	echo 	"jbb2015.product.SUT.hw.system.hw_1.name=$vendor"
 	echo 	"jbb2015.product.SUT.hw.system.hw_1.model=$model"
-	echo 	"jbb2015.product.SUT.hw.system.hw_1.formFactor=HW_FORM_FACTOR"
+	echo 	"jbb2015.product.SUT.hw.system.hw_1.formFactor=$form_factor"
 	echo 	"jbb2015.product.SUT.hw.system.hw_1.cpuName=$cpuname"
 	echo 	"jbb2015.product.SUT.hw.system.hw_1.cpuCharacteristics=CPU_CHARACTERISTICS "
 	echo 	"jbb2015.product.SUT.hw.system.hw_1.nSystems=1 "
