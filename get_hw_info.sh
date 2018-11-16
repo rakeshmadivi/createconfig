@@ -47,15 +47,24 @@ nodes=$(echo `lscpu|grep "NUMA node("| awk -n '{print $3}'`)
 
 disk=$(echo `sudo lshw -short | grep disk| awk '{for(i=4;i<=NF;i++)printf "%s ",$i;print ""}'`)
 
+# SUT INFO
+form_factor=$(echo `sudo dmidecode -s "chassis-type"`)
 
 memory=$(echo `sed -n '1p' /proc/meminfo |awk -n '{print $2}'`)
 #printf "Memory: $memory\n"
 mem_in_GB=$(echo `echo "scale=2;${memory}/1024/1024" | bc -l`)
 
 
-mem_dimms=$(echo `sudo lshw -class memory| egrep "-memory:"| wc -l`)
+mem_dimms=$(echo `sudo lshw -C memory | grep DIMM |wc -l`) #$(echo `sudo lshw -class memory| egrep "-memory:"| wc -l`)
 #mem_dimms=2
+psu_installed=$(echo `sudo lshw -C power | grep power |wc -l`)
 network=$(echo `sudo lshw -short | grep network | awk '{for(i=4;i<=NF;i++)printf "%s ",$i; print ""}'`)
+
+#nw_name=$(sudo ifconfig | grep -B1 "`hostname -I`" | head -n1|cut -f1 -d ':')
+nw_details=$(sudo lshw -C network | egrep "`hostname -I`|product|vendor|logical"| grep -B3 "`hostname -I`")
+nw_name=$(echo $nw_details | grep logical | cut -f2 -d ':')
+nw_vendor=$(echo $nw_details | grep vendor | cut -f2 -d ':')
+nw_product=$(echo $nw_details | grep product | cut -f2 -d ':')
 
 avail=`date +%b-%Y`
 
@@ -188,10 +197,10 @@ elif [ "$1" = "jbb" ]; then
 	echo 	"jbb2015.product.SUT.hw.system.hw_1.disk=$disk "
 	echo 	"jbb2015.product.SUT.hw.system.hw_1.file_system=HW_FILE_SYSTEM "
 	echo 	"jbb2015.product.SUT.hw.system.hw_1.memoryInGB=$mem_in_GB "
-	echo 	"jbb2015.product.SUT.hw.system.hw_1.memoryDIMMS=$(if [ "$mem_dimms" != "0" ];then echo $mem_dimms;else echo "";fi) "
+	echo 	"jbb2015.product.SUT.hw.system.hw_1.memoryDIMMS=$(if [ "$mem_dimms" != "0" ];then echo $mem_dimms;else echo "ENTER_MANUALLY";fi) "
 	echo 	"jbb2015.product.SUT.hw.system.hw_1.memoryDetails=HW_MEM_DETAILS  "
-	echo 	"jbb2015.product.SUT.hw.system.hw_1.networkInterface=$network "
-	echo 	"jbb2015.product.SUT.hw.system.hw_1.psuInstalled=HW_PSU_DETAILS "
+	echo 	"jbb2015.product.SUT.hw.system.hw_1.networkInterface=$nw_name "
+	echo 	"jbb2015.product.SUT.hw.system.hw_1.psuInstalled=$psu_installed "
 	echo 	"jbb2015.product.SUT.hw.system.hw_1.other=HW_OTHER_DETAILS "
 	echo 	"jbb2015.product.SUT.hw.system.hw_1.sharedEnclosure=None "
 	echo 	"jbb2015.product.SUT.hw.system.hw_1.sharedDescription=None "
@@ -201,8 +210,8 @@ elif [ "$1" = "jbb" ]; then
 	echo 	"jbb2015.product.SUT.hw.system.hw_1.notes=None"
 	echo 	"#jbb2015.product.SUT.hw.other.<OTHER label>.<param> = <value> "
 	echo 	"# Sample configuration for \"network_1\" other "
-	echo 	"jbb2015.product.SUT.hw.other.network_1.name=NW_DETAILS "
-	echo 	"jbb2015.product.SUT.hw.other.network_1.vendor=NW_DETAILS"
+	echo 	"jbb2015.product.SUT.hw.other.network_1.name=$nw_product "
+	echo 	"jbb2015.product.SUT.hw.other.network_1.vendor=$nw_vendor"
 	echo 	"jbb2015.product.SUT.hw.other.network_1.vendor.url=http://NW_DETAILS.com/ "
 	echo 	"jbb2015.product.SUT.hw.other.network_1.version=NW_VERSION "
 	echo 	"jbb2015.product.SUT.hw.other.network_1.available=$avail "
